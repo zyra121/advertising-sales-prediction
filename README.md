@@ -94,3 +94,7 @@ This plot visualizes the regression line for a simple linear regression model al
 ![Actual vs Predicted Sales](images/actual_vs_predict.png)
 
 A scatter plot comparing actual vs predicted sales values. It visually shows the accuracy and performance of the regression model.
+
+####################################
+
+If you found this helpful, a ⭐ would be appreciated!
