@@ -60,43 +60,36 @@ Additionally, it includes an implementation of Gradient Descent from scratch for
 
 ## 📊 Visualizations
 
-1. scatterplot_TV
 
 ![TV vs Sales](images/scatterplot_TV.png)
 
 A scatter plot showing the relationship between TV advertising budget and sales. This visualization helps to analyze how TV advertising affects sales.
 
-2. scatterplot_radio
 
 ![Radio vs Sales](images/scatterplot_radio.png)
 
 A scatter plot displaying the correlation between radio advertising budget and sales. Useful for evaluating the impact of radio ads on product sales.
 
-3. scatterplot_newspaper
 
 ![Newspaper vs Sales](images/scatterplot_newspaper.png)
 
 This plot shows the relationship between newspaper advertising budget and sales. It helps assess how newspaper ads influence sales.
 
-4. pairplot
 
 ![Pairplot of Dataset](images/pairplot_df.png)
 
 A pairplot illustrating the pairwise relationships between all features in the dataset. It provides a comprehensive view of the data distribution and feature interactions.
 
-5. correlation_heatmap
 
 ![Correlation Heatmap](images/correlation_heatmap.png)
 
 A heatmap visualizing the correlation coefficients among all variables. It's essential for detecting multicollinearity before applying multiple linear regression.
 
-6. model_equation
 
 ![Model Equation](images/model_equation.png)
 
 This plot visualizes the regression line for a simple linear regression model along with its equation. It demonstrates how the model predicts sales based on TV budget.
 
-7. actual_vs_predict
 
 ![Actual vs Predicted Sales](images/actual_vs_predict.png)
 
