@@ -64,11 +64,11 @@ It is not appropriate to compare MSE, MAE, and RMSE directly with each other, as
 
 Instead, one evaluation metric should be selected before analysis begins, and all comparisons—such as:
 
-between different models,
+- between different models,
 
-before and after applying feature engineering techniques,
+- before and after applying feature engineering techniques,
 
-or during hyperparameter tuning—
+- or during hyperparameter tuning—
 
 should be conducted using that same metric to ensure consistency and fairness in performance evaluation.
 
