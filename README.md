@@ -72,11 +72,6 @@ or during hyperparameter tuning—
 
 should be conducted using that same metric to ensure consistency and fairness in performance evaluation.
 
-🔍 Why Not Compare MSE, MAE, RMSE Directly?
-Metric	Penalizes Outliers	Unit	Interpretability	Sensitivity
-MAE	❌ Low	Same as target	Easy ✅	Stable
-MSE	✅ High	Squared unit	Less intuitive	Sensitive
-RMSE	✅ High	Same as target	More intuitive than MSE	Sensitive
 
 
 ## 📊 Visualizations
