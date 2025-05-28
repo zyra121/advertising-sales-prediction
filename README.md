@@ -58,6 +58,27 @@ Additionally, it includes an implementation of Gradient Descent from scratch for
 [Advertising.csv (ISL book)](https://www.statlearning.com/resources-second-edition)
 
 
+## 📌 Evaluation Metric Selection Warning
+⚠️ Important Note on Metric Comparison
+It is not appropriate to compare MSE, MAE, and RMSE directly with each other, as they are based on different error formulations and interpret errors in different ways.
+
+Instead, one evaluation metric should be selected before analysis begins, and all comparisons—such as:
+
+between different models,
+
+before and after applying feature engineering techniques,
+
+or during hyperparameter tuning—
+
+should be conducted using that same metric to ensure consistency and fairness in performance evaluation.
+
+🔍 Why Not Compare MSE, MAE, RMSE Directly?
+Metric	Penalizes Outliers	Unit	Interpretability	Sensitivity
+MAE	❌ Low	Same as target	Easy ✅	Stable
+MSE	✅ High	Squared unit	Less intuitive	Sensitive
+RMSE	✅ High	Same as target	More intuitive than MSE	Sensitive
+
+
 ## 📊 Visualizations
 
 
