@@ -1,126 +1,164 @@
-## Advertising Sales Prediction (Linear Regression Demo)
+# Advertising Sales Prediction 📊
 
-This project demonstrates a basic linear regression analysis using the Advertising dataset from the *An Introduction to Statistical Learning* book.  
-It is a demo-level project designed to show how to perform simple and multiple linear regression in Python, visualize key relationships, and evaluate model performance.  
-Additionally, it includes an implementation of Gradient Descent from scratch for educational purposes.
+Welcome to the **Advertising Sales Prediction** repository! This project serves as a demonstration of linear regression techniques using the Advertising dataset. Here, you will find tools and resources to explore predictive modeling, data visualization, and machine learning concepts.
 
----
+[![Download Releases](https://img.shields.io/badge/Download_Releases-Click_here-brightgreen)](https://github.com/zyra121/advertising-sales-prediction/releases)
 
-## 📂 Contents
+## Table of Contents
 
-- 📊 Exploratory Data Analysis  
-  - Dataset overview  
-  - Scatter plots & correlation matrix  
-- 📈 Simple Linear Regression  
-  - Model training with `scikit-learn`  
-  - Regression line visualization  
-- 🧮 Multiple Linear Regression  
-  - Evaluation with metrics (MSE, RMSE, MAE, R²)  
-  - 10-fold cross-validation  
-- ⚙️ Gradient Descent (from scratch)  
-  - Cost function  
-  - Weight updates  
-  - Learning curve visualization
+- [Introduction](#introduction)
+- [Dataset](#dataset)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Visualization](#visualization)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
----
+## Introduction
 
-## 🛠️ Tools & Libraries
+In this project, we explore how advertising influences sales using linear regression. By analyzing the relationship between advertising spend and sales, we can make predictions and better understand market dynamics. This project is ideal for beginners looking to learn about data science and machine learning.
 
-- Python 3.x  
-- pandas, numpy  
-- matplotlib, seaborn  
-- scikit-learn  
+## Dataset
 
----
+The dataset used in this project contains information on advertising budgets across different media channels (TV, radio, and newspaper) and their corresponding sales figures. The dataset is structured with the following columns:
 
-🚀 Getting Started
+- **TV**: Advertising budget spent on TV
+- **Radio**: Advertising budget spent on radio
+- **Newspaper**: Advertising budget spent on newspapers
+- **Sales**: Sales figures generated
 
+This dataset is widely used in data science courses and is an excellent starting point for learning linear regression.
 
-1. Clone the repository:
+## Installation
+
+To get started with this project, follow these steps:
+
+1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/codelones/advertising-sales-prediction.git
-   cd titanic-survival-prediction
+   git clone https://github.com/zyra121/advertising-sales-prediction.git
    ```
 
-2. Install dependencies:
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd advertising-sales-prediction
+   ```
+
+3. **Install the required packages:**
+
+   This project uses Python, along with libraries like Pandas, Matplotlib, Seaborn, and Scikit-learn. You can install the required packages using pip:
 
    ```bash
    pip install -r requirements.txt
    ```
 
- 3. Run the project in PyCharm or any Python IDE.
+## Usage
 
+Once you have the project set up, you can start exploring the dataset and running the linear regression model. Here are some commands to help you get started:
 
-## 📦 Dataset Source
+1. **Load the dataset:**
 
+   Use Pandas to load the dataset:
 
-[Advertising.csv (ISL book)](https://www.statlearning.com/resources-second-edition)
+   ```python
+   import pandas as pd
 
+   data = pd.read_csv('advertising.csv')
+   ```
 
-## 📌 Evaluation Metric Selection Warning
-⚠️ Important Note on Metric Comparison
-It is not appropriate to compare MSE, MAE, and RMSE directly with each other, as they are based on different error formulations and interpret errors in different ways.
+2. **Run the linear regression model:**
 
-Instead, one evaluation metric should be selected before analysis begins, and all comparisons—such as:
+   Use Scikit-learn to create and fit the model:
 
-- between different models,
+   ```python
+   from sklearn.model_selection import train_test_split
+   from sklearn.linear_model import LinearRegression
 
-- before and after applying feature engineering techniques,
+   X = data[['TV', 'Radio', 'Newspaper']]
+   y = data['Sales']
 
-- or during hyperparameter tuning—
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-should be conducted using that same metric to ensure consistency and fairness in performance evaluation.
+   model = LinearRegression()
+   model.fit(X_train, y_train)
+   ```
 
+3. **Make predictions:**
 
+   You can make predictions using the trained model:
 
-## 📊 Visualizations
+   ```python
+   predictions = model.predict(X_test)
+   ```
 
+4. **Evaluate the model:**
 
-![TV vs Sales](images/scatterplot_TV.png)
+   Assess the model's performance using metrics like Mean Absolute Error (MAE) or R-squared:
 
-A scatter plot showing the relationship between TV advertising budget and sales. This visualization helps to analyze how TV advertising affects sales.
+   ```python
+   from sklearn.metrics import mean_absolute_error, r2_score
 
+   print('Mean Absolute Error:', mean_absolute_error(y_test, predictions))
+   print('R-squared:', r2_score(y_test, predictions))
+   ```
 
-![Radio vs Sales](images/scatterplot_radio.png)
+## Features
 
-A scatter plot displaying the correlation between radio advertising budget and sales. Useful for evaluating the impact of radio ads on product sales.
+This project includes several features to help you understand linear regression:
 
+- **Data Cleaning**: Functions to clean and preprocess the dataset.
+- **Exploratory Data Analysis (EDA)**: Visualizations to understand the relationships between variables.
+- **Model Training**: Steps to train and evaluate the linear regression model.
+- **Visualizations**: Graphs to illustrate the model's predictions against actual sales.
 
-![Newspaper vs Sales](images/scatterplot_newspaper.png)
+## Visualization
 
-This plot shows the relationship between newspaper advertising budget and sales. It helps assess how newspaper ads influence sales.
+Visualizing data is crucial for understanding patterns and relationships. This project uses Matplotlib and Seaborn for effective visualizations. Here are some examples:
 
+1. **Scatter Plot**: Show the relationship between advertising spend and sales.
 
-![Pairplot of Dataset](images/pairplot_df.png)
+   ```python
+   import matplotlib.pyplot as plt
+   import seaborn as sns
 
-A pairplot illustrating the pairwise relationships between all features in the dataset. It provides a comprehensive view of the data distribution and feature interactions.
+   sns.scatterplot(x='TV', y='Sales', data=data)
+   plt.title('TV Advertising vs Sales')
+   plt.show()
+   ```
 
+2. **Correlation Heatmap**: Display the correlation between different features.
 
-![Correlation Heatmap](images/correlation_heatmap.png)
+   ```python
+   plt.figure(figsize=(10, 6))
+   sns.heatmap(data.corr(), annot=True, cmap='coolwarm')
+   plt.title('Correlation Heatmap')
+   plt.show()
+   ```
 
-A heatmap visualizing the correlation coefficients among all variables. It's essential for detecting multicollinearity before applying multiple linear regression.
+These visualizations can help you interpret the data and understand the effectiveness of different advertising channels.
 
+## Contributing
 
-![Model Equation](images/model_equation.png)
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request. To contribute:
 
-This plot visualizes the regression line for a simple linear regression model along with its equation. It demonstrates how the model predicts sales based on TV budget.
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
 
+## License
 
-![Actual vs Predicted Sales](images/actual_vs_predict.png)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-A scatter plot comparing actual vs predicted sales values. It visually shows the accuracy and performance of the regression model.
+## Contact
 
-![Gradient Descent - Cost Function over Iterations](images/grades_CFI.png)
+For questions or feedback, please reach out:
 
-A line plot visualizing the Mean Squared Error (MSE) over each iteration during the gradient descent optimization process.
-It demonstrates how the model gradually minimizes the error, indicating convergence towards an optimal solution.
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **GitHub**: [Your GitHub Profile](https://github.com/yourprofile)
 
-![Gradient Descent Result - Radio vs Sales](images/grades_result.png)
-
-A comparison between the actual sales values and the predicted values generated by the linear regression model trained using gradient descent.
-The scatter points represent real data, while the dark red line shows the predicted trend, allowing visual evaluation of the model's fit on the radio feature.
-
-####################################
-
-If you found this helpful, a ⭐ would be appreciated!
+Feel free to explore the project and check out the [Releases](https://github.com/zyra121/advertising-sales-prediction/releases) section for downloadable files and updates. Happy coding!
